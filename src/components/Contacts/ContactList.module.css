@@ -1,0 +1,12 @@
+.rightPage {
+  width: 100%;
+}
+.list {
+  height: 450px;
+  overflow: auto;
+  list-style: none;
+}
+.itemList {
+  display: flex;
+  justify-content: space-between;
+}
