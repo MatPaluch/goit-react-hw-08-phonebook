@@ -5,11 +5,15 @@ export const Navigation = () => {
   const isLoggedIn = true;
   return (
     <nav>
-      <NavLink className={styles.link} to="/goit-react-hw-08-phonebook/">
+      <NavLink className={styles.link} to="/goit-react-hw-08-phonebook/" end>
         Home
       </NavLink>
       {isLoggedIn && (
-        <NavLink to="/goit-react-hw-08-phonebook/contacts">Contacts</NavLink>
+        <NavLink
+          className={styles.link}
+          to="/goit-react-hw-08-phonebook/contacts">
+          Contacts
+        </NavLink>
       )}
     </nav>
   );
