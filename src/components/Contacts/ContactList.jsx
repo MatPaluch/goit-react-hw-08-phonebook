@@ -55,7 +55,7 @@ const ContactList = () => {
                     type="button"
                     onClick={deleteFunc}
                     value={obj.id}
-                    className="bg-red-600 px-1.5 py-1 rounded-md text-white hover:bg-red-500 hover:shadow-sm hover:shadow-rose-600  active:bg-red-700">
+                    className={Styles.delete_button}>
                     Delete
                   </button>
                 </li>

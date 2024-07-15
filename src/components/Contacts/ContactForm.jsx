@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import { getStateContactsSlice } from "../../redux/selectors";
 import { addContact } from "../../redux/operations";
+import styles from "./ContactForm.module.css";
 
 const ContactForm = () => {
   const nameId = nanoid();
@@ -27,35 +28,31 @@ const ContactForm = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
-      <form onSubmit={submitHandler}>
-        <label htmlFor={nameId}>Name</label>
-        <br />
-        <input
-          id={nameId}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Z '\-]+$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          autoComplete="true"
-        />
-        <br />
-        <label htmlFor={phoneId}>Phone</label>
-        <br />
-        <input
-          id={phoneId}
-          type="tel"
-          name="number"
-          pattern="^\+?[0-9\(\) \-]+$"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          autoComplete="true"
-        />
-        <br />
-        <button
-          type="submit"
-          className="bg-emerald-500 px-1.5 py-1 rounded-md text-white mt-3 hover:bg-green-500 hover:shadow-sm hover:shadow-green-600  active:bg-green-700">
+      <h2>Phonebook</h2>
+      <form className={styles.form} onSubmit={submitHandler}>
+        <label className={styles.label}>
+          Name
+          <input
+            type="text"
+            name="name"
+            pattern="^[a-zA-Z '\-]+$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            autoComplete="true"
+          />
+        </label>
+        <label className={styles.label}>
+          Phone
+          <input
+            type="tel"
+            name="number"
+            pattern="^\+?[0-9\(\) \-]+$"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            autoComplete="true"
+          />
+        </label>
+        <button type="submit" className={styles.add_button}>
           Add Contact
         </button>
       </form>
