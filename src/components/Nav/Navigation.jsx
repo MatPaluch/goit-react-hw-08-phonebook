@@ -11,8 +11,8 @@ export const Navigation = () => {
       {isLoggedIn && (
         <NavLink
           className={styles.link}
-          to="/goit-react-hw-08-phonebook/contacts">
-          Contacts
+          to="/goit-react-hw-08-phonebook/phonebook">
+          Phonebook
         </NavLink>
       )}
     </nav>

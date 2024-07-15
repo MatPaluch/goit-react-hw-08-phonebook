@@ -7,7 +7,7 @@ export default function Contacts() {
   return (
     <OpenBook>
       <Helmet>
-        <title>Contacts</title>
+        <title>Phonebook</title>
       </Helmet>
       <ContactForm />
       <ContactList />
