@@ -28,9 +28,25 @@ const contactsSlice = createSlice({
         );
         state.allContact.splice(idx, 1);
         state.err = null;
-      });
-    // here are scaling pending and rejected action ↓
-    // .addMatcher((action)=>HAS to return similar action type,(state,action)=>{reducer operations with store,state 'PURE mutate functions'})
+      })
+      // here are scaling pending and rejected action ↓
+      // .addMatcher((action)=>HAS to return similar action type,(state,action)=>{reducer operations with store,state 'PURE mutate functions'})
+      .addMatcher(
+        (action) => {
+          action.type.endsWith("/pending");
+          console.log(action.type);
+        },
+        (state) => {
+          state.isLoading = true;
+        },
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/rejected"),
+        (state, action) => {
+          state.isLoading = false;
+          state.err = action.payload;
+        },
+      );
   },
 });
 

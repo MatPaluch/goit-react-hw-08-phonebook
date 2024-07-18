@@ -44,3 +44,18 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const checkIsLoggedIn = createAsyncThunk(
+  "auth/check",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    console.log(state);
+    const persistedToken = state.auth.token;
+    // try {
+    //   const response = await axios.get("/users/current");
+    //   return response.data;
+    // } catch (error) {
+    //   return thunkAPI.rejectWithValue(error.message);
+    // }
+  },
+);

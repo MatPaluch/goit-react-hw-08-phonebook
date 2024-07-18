@@ -24,6 +24,10 @@ const ContactList = () => {
     dispatch(change(inputText));
   };
 
+  useEffect(() => {
+    dispatch(fetchContactsThunk());
+  }, [dispatch]);
+
   return (
     <div className={Styles.rightPage}>
       <h2>Contacts</h2>
@@ -48,7 +52,7 @@ const ContactList = () => {
                   key={obj.id}
                   className={Styles.itemList + " flex items-center"}>
                   <span>
-                    {obj.name}: {obj.phone}
+                    {obj.name}: {obj.number}
                   </span>
                   <button
                     type="button"
@@ -57,6 +61,7 @@ const ContactList = () => {
                     className={Styles.delete_button}>
                     Delete
                   </button>
+                  {console.log(obj)}
                 </li>
               ),
           )
