@@ -49,13 +49,19 @@ export const checkIsLoggedIn = createAsyncThunk(
   "auth/check",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    console.log(state);
     const persistedToken = state.auth.token;
-    // try {
-    //   const response = await axios.get("/users/current");
-    //   return response.data;
-    // } catch (error) {
-    //   return thunkAPI.rejectWithValue(error.message);
-    // }
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue(
+        "You are not logged in! Log in and try again.",
+      );
+    }
+    try {
+      setTokenAuth(state.auth.token);
+      const response = await axios.get("/users/current");
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   },
 );

@@ -1,8 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 import { Layout } from "./Layout";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
+import { useDispatch } from "react-redux";
+import { checkIsLoggedIn } from "../redux/auth/operations";
 
 const HomePage = lazy(() => import("../pages/Home"));
 const LoginPage = lazy(() => import("../pages/Login"));
@@ -10,6 +12,10 @@ const RegisterPage = lazy(() => import("../pages/Register"));
 const ContactsPage = lazy(() => import("../pages/Contacts"));
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkIsLoggedIn());
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/goit-react-hw-08-phonebook" element={<Layout />}>

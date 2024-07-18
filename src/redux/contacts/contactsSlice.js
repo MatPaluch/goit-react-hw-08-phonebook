@@ -32,16 +32,17 @@ const contactsSlice = createSlice({
       // here are scaling pending and rejected action ↓
       // .addMatcher((action)=>HAS to return similar action type,(state,action)=>{reducer operations with store,state 'PURE mutate functions'})
       .addMatcher(
-        (action) => {
-          action.type.endsWith("/pending");
-          console.log(action.type);
-        },
+        (action) =>
+          action.type.startsWith("contacts") &&
+          action.type.endsWith("/pending"),
         (state) => {
           state.isLoading = true;
         },
       )
       .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
+        (action) =>
+          action.type.startsWith("contacts") &&
+          action.type.endsWith("/rejected"),
         (state, action) => {
           state.isLoading = false;
           state.err = action.payload;
