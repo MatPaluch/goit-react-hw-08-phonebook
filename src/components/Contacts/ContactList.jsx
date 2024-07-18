@@ -1,10 +1,13 @@
 import Styles from "./ContactList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getStateContactsSlice, getFilterWord } from "../../redux/selectors";
-
-import { change } from "../../redux/filterSlice";
+import { getStateContactsSlice } from "../../redux/contacts/selectors";
+import { getFilterWord } from "../../redux/filter/selectors";
+import { change } from "../../redux/filter/filterSlice";
 import { useEffect } from "react";
-import { deleteContact, fetchContactsThunk } from "../../redux/operations";
+import {
+  deleteContact,
+  fetchContactsThunk,
+} from "../../redux/contacts/operations";
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -20,10 +23,6 @@ const ContactList = () => {
     const inputText = ev.target.value;
     dispatch(change(inputText));
   };
-
-  useEffect(() => {
-    dispatch(fetchContactsThunk());
-  }, [dispatch]);
 
   return (
     <div className={Styles.rightPage}>

@@ -1,14 +1,11 @@
-import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import { getStateContactsSlice } from "../../redux/selectors";
-import { addContact } from "../../redux/operations";
+import { getStateContactsSlice } from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/operations";
 import styles from "./ContactForm.module.css";
 
 const ContactForm = () => {
-  const nameId = nanoid();
-  const phoneId = nanoid();
   const dispatch = useDispatch();
 
   const { allContact } = useSelector(getStateContactsSlice);
