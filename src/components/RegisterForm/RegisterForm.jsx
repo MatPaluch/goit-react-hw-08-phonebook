@@ -11,15 +11,15 @@ export const RegisterForm = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
       <label className={styles.label}>
-        Username
+        Username:
         <input type="text" name="name" />
       </label>
       <label className={styles.label}>
-        Email
+        Email:
         <input type="email" name="email" />
       </label>
       <label className={styles.label}>
-        Password
+        Password:
         <input type="password" name="password" />
       </label>
       <button className={styles.sign_button} type="submit">

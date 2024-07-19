@@ -6,6 +6,7 @@ import { change } from "../../redux/filter/filterSlice";
 import { useEffect } from "react";
 import {
   deleteContact,
+  editContact,
   fetchContactsThunk,
 } from "../../redux/contacts/operations";
 
@@ -17,6 +18,11 @@ const ContactList = () => {
   const deleteFunc = (ev) => {
     const idContact = ev.target.value;
     dispatch(deleteContact(idContact));
+  };
+
+  const editHandler = (ev) => {
+    const idContact = ev.target.value;
+    dispatch(editContact({ id: idContact, user }));
   };
 
   const filtredContacts = (ev) => {
@@ -34,13 +40,14 @@ const ContactList = () => {
       <label htmlFor="idFilter">Find contacts by name</label>
       <br />
       <input
+        className={Styles.idFilter}
         id="idFilter"
         type="text"
         name="filter"
         onChange={filtredContacts}
         autoComplete="true"
       />
-      <ul className={Styles.list + " flex flex-col gap-2.5 mt-3"}>
+      <ul className={Styles.list}>
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -48,12 +55,18 @@ const ContactList = () => {
           allContact.map(
             (obj) =>
               obj.name.toLowerCase().includes(filterText.toLowerCase()) && (
-                <li
-                  key={obj.id}
-                  className={Styles.itemList + " flex items-center"}>
+                <li key={obj.id} className={Styles.itemList}>
                   <span>
+                    {console.log(obj.id)}
                     {obj.name}: {obj.number}
                   </span>
+                  <button
+                    type="button"
+                    onClick={editHandler}
+                    value={obj.id}
+                    className={Styles.edit_button}>
+                    Edit
+                  </button>
                   <button
                     type="button"
                     onClick={deleteFunc}

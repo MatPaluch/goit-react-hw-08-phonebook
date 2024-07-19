@@ -1,7 +1,11 @@
 .rightPage {
   width: 100%;
 }
+.idFilter {
+  width: 100%;
+}
 .list {
+  margin-top: 16px;
   height: 450px;
   overflow: auto;
   list-style: none;

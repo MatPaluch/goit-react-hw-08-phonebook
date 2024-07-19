@@ -52,9 +52,7 @@ export const checkIsLoggedIn = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      return thunkAPI.rejectWithValue(
-        "You are not logged in! Log in and try again.",
-      );
+      return thunkAPI.rejectWithValue("Ups! Your token has disapear. :C");
     }
     try {
       setTokenAuth(state.auth.token);

@@ -1,5 +1,3 @@
-@import-normalize;
-
 body {
   font-family: sans-serif;
   line-height: 1.5;
@@ -28,7 +26,7 @@ img {
 }
 
 .active {
-  color: #e84a5f;
+  color: #f34949;
 }
 
 .container {
@@ -41,7 +39,7 @@ img {
   background-image: url("./assets/book_background.png");
   background-repeat: no-repeat;
   background-size: contain;
-  margin: 0 auto;
+  margin: -50px auto;
   width: 912px;
   height: 912px;
 }
@@ -50,4 +48,37 @@ img {
   overflow: hidden;
   display: flex;
   gap: 280px;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 60px;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side, #fa3030 90%, #0000);
+  background:
+    var(--_g) 0% 50%,
+    var(--_g) 50% 50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 100%;
+  animation: l7 1s infinite linear;
+  margin: 0 auto;
+}
+@keyframes l7 {
+  33% {
+    background-size:
+      calc(100% / 3) 0%,
+      calc(100% / 3) 100%,
+      calc(100% / 3) 100%;
+  }
+  50% {
+    background-size:
+      calc(100% / 3) 100%,
+      calc(100% / 3) 0%,
+      calc(100% / 3) 100%;
+  }
+  66% {
+    background-size:
+      calc(100% / 3) 100%,
+      calc(100% / 3) 100%,
+      calc(100% / 3) 0%;
+  }
 }
