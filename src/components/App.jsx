@@ -6,12 +6,11 @@ import { PrivateRoute } from "./PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
 import { checkIsLoggedIn } from "../redux/auth/operations";
 
+import { NotFoundPage } from "../pages/NotFound";
 const HomePage = lazy(() => import("../pages/Home"));
 const LoginPage = lazy(() => import("../pages/Login"));
 const RegisterPage = lazy(() => import("../pages/Register"));
 const ContactsPage = lazy(() => import("../pages/Contacts"));
-import { NotFoundPage } from "../pages/NotFound";
-import { selecIsRefreshing } from "../redux/auth/selectors";
 
 const App = () => {
   const dispatch = useDispatch();

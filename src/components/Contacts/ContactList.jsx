@@ -74,7 +74,6 @@ const ContactList = () => {
                     className={Styles.delete_button}>
                     Delete
                   </button>
-                  {console.log(obj)}
                 </li>
               ),
           )
