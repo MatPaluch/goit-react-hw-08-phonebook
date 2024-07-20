@@ -3,17 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStateContactsSlice } from "../../redux/contacts/selectors";
 import { getFilterWord } from "../../redux/filter/selectors";
 import { change } from "../../redux/filter/filterSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   deleteContact,
   editContact,
   fetchContactsThunk,
 } from "../../redux/contacts/operations";
+import PopupWindow from "../Modal/Modal";
 
 const ContactList = () => {
   const dispatch = useDispatch();
   const { isLoading, err, allContact } = useSelector(getStateContactsSlice);
   const filterText = useSelector(getFilterWord);
+
+  const [openModal, setOpenModal] = useState(false);
+  const [idContact, setIdContact] = useState();
 
   const deleteFunc = (ev) => {
     const idContact = ev.target.value;
@@ -21,8 +25,9 @@ const ContactList = () => {
   };
 
   const editHandler = (ev) => {
-    const idContact = ev.target.value;
-    dispatch(editContact({ id: idContact, user }));
+    const id = ev.target.value;
+    setIdContact(id);
+    setOpenModal(true);
   };
 
   const filtredContacts = (ev) => {
@@ -36,6 +41,7 @@ const ContactList = () => {
 
   return (
     <div className={Styles.rightPage}>
+      <PopupWindow show={openModal} idFromButton={idContact} />
       <h2>Contacts</h2>
       <label htmlFor="idFilter">Find contacts by name</label>
       <br />

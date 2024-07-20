@@ -25,6 +25,11 @@ img {
   height: auto;
 }
 
+#popup-root {
+  position: relative;
+  z-index: 999;
+}
+
 .active {
   color: #f34949;
 }
