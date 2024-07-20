@@ -1,8 +1,11 @@
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editContact } from "../../redux/contacts/operations";
 
 const PopupWindow = ({ show, contactData, closeModal }) => {
+  const dispatch = useDispatch();
   const contact = JSON.parse(contactData);
 
   const [name, setName] = useState(contact.name);
@@ -18,13 +21,21 @@ const PopupWindow = ({ show, contactData, closeModal }) => {
     setNumber(text);
   };
 
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    dispatch(
+      editContact({ id: contact.id, user: { name: name, number: number } }),
+    );
+    closeModal();
+  };
+
   return ReactDOM.createPortal(
     show && (
       <div className={styles.modal}>
         <div className={styles.modalBox}>
           <h3>Edit Contact</h3>
 
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.label}>
               Name
               <input

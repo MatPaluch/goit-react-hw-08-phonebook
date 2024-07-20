@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addContact, deleteContact, fetchContactsThunk } from "./operations";
+import {
+  addContact,
+  deleteContact,
+  editContact,
+  fetchContactsThunk,
+} from "./operations";
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -27,6 +32,14 @@ const contactsSlice = createSlice({
           (contact) => contact.id === action.payload,
         );
         state.allContact.splice(idx, 1);
+        state.err = null;
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const idx = state.allContact.findIndex(
+          (contact) => contact.id === action.payload.idUser,
+        );
+        state.allContact.splice(idx, 1, action.payload.user);
         state.err = null;
       })
       // here are scaling pending and rejected action ↓

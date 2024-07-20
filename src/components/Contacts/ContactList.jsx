@@ -6,7 +6,6 @@ import { change } from "../../redux/filter/filterSlice";
 import { useEffect, useState } from "react";
 import {
   deleteContact,
-  editContact,
   fetchContactsThunk,
 } from "../../redux/contacts/operations";
 import PopupWindow from "../Modal/Modal";
