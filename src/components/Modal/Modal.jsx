@@ -23,9 +23,7 @@ const PopupWindow = ({ show, contactData, closeModal }) => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    dispatch(
-      editContact({ id: contact.id, user: { name: name, number: number } }),
-    );
+    dispatch(editContact({ id: contact.id, name: name, number: number }));
     closeModal();
   };
 

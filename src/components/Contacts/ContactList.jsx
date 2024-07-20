@@ -16,7 +16,7 @@ const ContactList = () => {
   const filterText = useSelector(getFilterWord);
 
   const [openModal, setOpenModal] = useState(false);
-  const [contact, setContact] = useState("");
+  const [contact, setContact] = useState();
 
   const editHandler = (ev) => {
     const obj = ev.target.value;
@@ -72,22 +72,24 @@ const ContactList = () => {
               obj.name.toLowerCase().includes(filterText.toLowerCase()) && (
                 <li key={obj.id} className={Styles.itemList}>
                   <span>
-                    {obj.name}: {obj.number}
+                    {obj.name}:<br /> {obj.number}
                   </span>
-                  <button
-                    type="button"
-                    onClick={editHandler}
-                    value={JSON.stringify(obj)}
-                    className={Styles.edit_button}>
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    onClick={deleteFunc}
-                    value={obj.id}
-                    className={Styles.delete_button}>
-                    Delete
-                  </button>
+                  <div className={Styles.buttonsDiv}>
+                    <button
+                      type="button"
+                      onClick={editHandler}
+                      value={JSON.stringify(obj)}
+                      className={Styles.edit_button}>
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={deleteFunc}
+                      value={obj.id}
+                      className={Styles.delete_button}>
+                      Delete
+                    </button>
+                  </div>
                 </li>
               ),
           )

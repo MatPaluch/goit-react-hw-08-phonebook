@@ -1,19 +1,46 @@
 import { useDispatch } from "react-redux";
 import styles from "./RegisterForm.module.css";
 import { register } from "../../redux/auth/operations";
+import { useToast } from "@chakra-ui/react";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
-
+  const toast = useToast();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     const nameValue = form.elements.name.value;
     const emailValue = form.elements.email.value;
     const passwordValue = form.elements.password.value;
-    dispatch(
-      register({ name: nameValue, email: emailValue, password: passwordValue }),
-    );
+    const loginPromise = new Promise((resolve, reject) => {
+      dispatch(
+        register({
+          name: nameValue,
+          email: emailValue,
+          password: passwordValue,
+        }),
+      )
+        .then((response) => {
+          if (response.error) {
+            reject(response.error);
+          } else {
+            resolve(response);
+          }
+        })
+        .catch((error) => reject(error));
+    });
+
+    toast.promise(loginPromise, {
+      success: {
+        title: "Registered successful",
+        description: "Welcome!",
+      },
+      error: {
+        title: "Register denied",
+        description: "Unable to register!",
+      },
+      loading: { title: "Registration...", description: "Please wait..." },
+    });
     form.reset();
   };
 

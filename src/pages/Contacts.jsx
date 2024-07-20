@@ -8,11 +8,12 @@ import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 export default function Contacts() {
   const isRefreshing = useSelector(selecIsRefreshing);
-  isRefreshing === false && Loading.remove(200);
+  isRefreshing === false && Loading.remove();
   return (
     <HelmetProvider>
       <OpenBook>
         <Helmet>
+          npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
           <title>Contacts</title>
         </Helmet>
         <ContactForm />

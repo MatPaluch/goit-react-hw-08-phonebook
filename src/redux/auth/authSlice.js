@@ -8,9 +8,13 @@ const authSlice = createSlice({
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
-    isValid: "",
+    isValid: null,
   },
-  reducers: {},
+  reducers: {
+    clearValid(state) {
+      state.isValid = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, action) => {
@@ -28,7 +32,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.isValid = "";
+        state.isValid = null;
         state.isRefreshing = false;
       })
       .addCase(logIn.rejected, (state, action) => {
@@ -46,5 +50,5 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { clearValid } = authSlice.actions;
 export const authReducer = authSlice.reducer;

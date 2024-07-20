@@ -10,9 +10,7 @@ export const Layout = () => {
     <div className="container">
       <AppBar />
       <Suspense
-        fallback={
-          isRefreshing === false ? <div className="loader"></div> : null
-        }>
+        fallback={isRefreshing === false && <div className="loader"></div>}>
         <Outlet />
       </Suspense>
     </div>

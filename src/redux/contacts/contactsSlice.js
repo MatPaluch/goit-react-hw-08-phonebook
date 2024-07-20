@@ -37,9 +37,9 @@ const contactsSlice = createSlice({
       .addCase(editContact.fulfilled, (state, action) => {
         state.isLoading = false;
         const idx = state.allContact.findIndex(
-          (contact) => contact.id === action.payload.idUser,
+          (contact) => contact.id === action.payload.id,
         );
-        state.allContact.splice(idx, 1, action.payload.user);
+        state.allContact.splice(idx, 1, action.payload);
         state.err = null;
       })
       // here are scaling pending and rejected action ↓
