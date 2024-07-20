@@ -1,13 +1,13 @@
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 
-const PopupWindow = ({ show, idFromButton }) => {
+const PopupWindow = ({ show, contactData, closeModal }) => {
   return ReactDOM.createPortal(
     show && (
       <div className={styles.modal}>
         <div className={styles.modalBox}>
           <h3>Edit Contact</h3>
-          {idFromButton}
+          {console.log(contactData)}
           <form className={styles.form}>
             <label className={styles.label}>
               Name
@@ -34,7 +34,10 @@ const PopupWindow = ({ show, idFromButton }) => {
             <button type="submit" className={styles.done}>
               Done
             </button>
-            <button type="button" className={styles.cancel}>
+            <button
+              type="button"
+              className={styles.cancel}
+              onClick={closeModal}>
               Cancel
             </button>
           </form>

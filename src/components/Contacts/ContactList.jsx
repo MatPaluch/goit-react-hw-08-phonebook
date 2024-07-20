@@ -17,17 +17,21 @@ const ContactList = () => {
   const filterText = useSelector(getFilterWord);
 
   const [openModal, setOpenModal] = useState(false);
-  const [idContact, setIdContact] = useState();
+  const [contact, setContact] = useState("");
+
+  const editHandler = (ev) => {
+    const obj = ev.target.value;
+    setContact(JSON.stringify(obj));
+    setOpenModal(true);
+  };
+
+  const closeModal = (ev) => {
+    setOpenModal(false);
+  };
 
   const deleteFunc = (ev) => {
     const idContact = ev.target.value;
     dispatch(deleteContact(idContact));
-  };
-
-  const editHandler = (ev) => {
-    const id = ev.target.value;
-    setIdContact(id);
-    setOpenModal(true);
   };
 
   const filtredContacts = (ev) => {
@@ -41,7 +45,13 @@ const ContactList = () => {
 
   return (
     <div className={Styles.rightPage}>
-      <PopupWindow show={openModal} idFromButton={idContact} />
+      {openModal && (
+        <PopupWindow
+          show={openModal}
+          cantactData={contact}
+          closeModal={closeModal}
+        />
+      )}
       <h2>Contacts</h2>
       <label htmlFor="idFilter">Find contacts by name</label>
       <br />
@@ -63,13 +73,12 @@ const ContactList = () => {
               obj.name.toLowerCase().includes(filterText.toLowerCase()) && (
                 <li key={obj.id} className={Styles.itemList}>
                   <span>
-                    {console.log(obj.id)}
                     {obj.name}: {obj.number}
                   </span>
                   <button
                     type="button"
                     onClick={editHandler}
-                    value={obj.id}
+                    value={JSON.stringify(obj)}
                     className={Styles.edit_button}>
                     Edit
                   </button>
