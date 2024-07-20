@@ -21,7 +21,7 @@ const ContactList = () => {
 
   const editHandler = (ev) => {
     const obj = ev.target.value;
-    setContact(JSON.stringify(obj));
+    setContact(obj);
     setOpenModal(true);
   };
 
@@ -48,7 +48,7 @@ const ContactList = () => {
       {openModal && (
         <PopupWindow
           show={openModal}
-          cantactData={contact}
+          contactData={contact}
           closeModal={closeModal}
         />
       )}

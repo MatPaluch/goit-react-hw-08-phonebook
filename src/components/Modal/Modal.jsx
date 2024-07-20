@@ -1,13 +1,29 @@
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
+import { useState } from "react";
 
 const PopupWindow = ({ show, contactData, closeModal }) => {
+  const contact = JSON.parse(contactData);
+
+  const [name, setName] = useState(contact.name);
+  const [number, setNumber] = useState(contact.number);
+
+  const handleChangeName = (ev) => {
+    const text = ev.target.value;
+    setName(text);
+  };
+
+  const handleChangeNum = (ev) => {
+    const text = ev.target.value;
+    setNumber(text);
+  };
+
   return ReactDOM.createPortal(
     show && (
       <div className={styles.modal}>
         <div className={styles.modalBox}>
           <h3>Edit Contact</h3>
-          {console.log(contactData)}
+
           <form className={styles.form}>
             <label className={styles.label}>
               Name
@@ -18,6 +34,8 @@ const PopupWindow = ({ show, contactData, closeModal }) => {
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 autoComplete="true"
+                value={name}
+                onChange={handleChangeName}
               />
             </label>
             <label className={styles.label}>
@@ -29,6 +47,8 @@ const PopupWindow = ({ show, contactData, closeModal }) => {
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
                 autoComplete="true"
+                value={number}
+                onChange={handleChangeNum}
               />
             </label>
             <button type="submit" className={styles.done}>
