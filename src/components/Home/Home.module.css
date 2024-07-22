@@ -1,0 +1,90 @@
+.mainDiv {
+  position: relative;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+.h1 {
+  position: relative;
+  z-index: 3;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+.tryMe {
+  position: absolute;
+  top: 186px;
+  right: 318px;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-size: 24px;
+}
+.arrow {
+  float: right;
+  transform: scaleX(-1);
+  position: absolute;
+  width: 90px;
+  right: 316px;
+  top: 50px;
+  z-index: 3;
+}
+.phoneBook {
+  position: absolute;
+  border-radius: 16px;
+  z-index: 1;
+  width: 450px;
+  right: 240px;
+}
+.stepList {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: 400px;
+  margin-bottom: 20px;
+  box-shadow: -4px 4px 16px 0px lightgreen;
+  background-color: lightgreen;
+  padding: 20px;
+  border-radius: 16px;
+  width: 400px;
+}
+.list {
+  margin-left: 20px;
+}
+.link {
+  color: blueviolet;
+  text-decoration: underline;
+}
+.exampleList {
+  list-style-position: inside;
+}
+.exampleDiv {
+  text-align: right;
+}
+.textHeader {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.imgAddContact {
+  border-radius: 16px;
+  width: 600px;
+  margin: 20px 0 0 auto;
+}
+.imgEditContact {
+  border-radius: 16px;
+  width: 600px;
+  margin-top: 20px;
+}
+.add {
+  box-shadow: 4px 6px 16px 2px lightskyblue;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 0 0 30px 250px;
+}
+.edit {
+  text-align: left;
+  box-shadow: -4px 6px 16px 2px lightskyblue;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 0px 250px 40px auto;
+}

@@ -1,9 +1,3 @@
-export const ClosedBook = () => {
-  return (
-    <main className="sectionHome">
-      <div className="closedBook">
-        <h1>Your Personal Phonebook!</h1>
-      </div>
-    </main>
-  );
+export const ClosedBook = ({ children }) => {
+  return <main className="container">{children}</main>;
 };
