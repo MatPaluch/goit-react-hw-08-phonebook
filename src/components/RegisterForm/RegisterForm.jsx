@@ -37,7 +37,7 @@ export const RegisterForm = () => {
       },
       error: {
         title: "Register denied",
-        description: "Unable to register!",
+        description: "Unable to register! Email in use or something is missing!",
       },
       loading: { title: "Registration...", description: "Please wait..." },
     });
@@ -48,15 +48,15 @@ export const RegisterForm = () => {
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
       <label className={styles.label}>
         Username:
-        <input type="text" name="name" />
+        <input type="text" name="name" required/>
       </label>
       <label className={styles.label}>
         Email:
-        <input type="email" name="email" />
+        <input type="email" name="email" required/>
       </label>
       <label className={styles.label}>
         Password:
-        <input type="password" name="password" />
+        <input type="password" name="password" required/>
       </label>
       <button className={styles.sign_button} type="submit">
         Sign up
