@@ -4,9 +4,9 @@ A simple phonebook app built with React. It allows users to store and manage con
 
 ## Technologies
 
-- **Frontend**: React, Redux, Axios, React-helmet, React-router
+- **Frontend**: React, Redux, Axios, React Helmet, React Router
 - **State Management**: Redux Toolkit
-- **UI Framework**: Chakra-UI, Framer motion, Notiflix
+- **UI Framework**: Chakra-UI, Framer Motion, Notiflix
 
 ## Features
 
@@ -14,8 +14,12 @@ A simple phonebook app built with React. It allows users to store and manage con
 - Search and filter contacts
 - Responsive design
 
+## API
+
+This app utilizes an external API for managing contacts:  
+[Connections API](https://connections-api.goit.global/docs/).
+
 ## Demo
 
-Check deatails link down below ↓
-
-https://matpaluch.github.io/goit-react-hw-08-phonebook/
+Check the live demo here:  
+[Live Demo](https://matpaluch.github.io/goit-react-hw-08-phonebook/)
