@@ -18,4 +18,4 @@ A simple phonebook app built with React. It allows users to store and manage con
 
 Check deatails link down below ↓
 
-[Visit my website](https://matpaluch.github.io/goit-react-hw-08-phonebook/)
+https://matpaluch.github.io/goit-react-hw-08-phonebook/
